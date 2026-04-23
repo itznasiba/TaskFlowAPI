@@ -1,4 +1,5 @@
-﻿using youtubeAPI.Core.Entities;
+﻿using AutoMapper;
+using YoutubeAPI.Core.Product;
 using YoutubeAPI.DataAccess.Repository;
 
 namespace YoutubeAPI.Business.Services
@@ -6,14 +7,25 @@ namespace YoutubeAPI.Business.Services
     public class ProductService : IProductService
     {
         private readonly IGenericRepository<Product> _repository;
-        public ProductService(IGenericRepository<Product> repository)
+        private readonly IMapper _mapper;
+        public ProductService(IGenericRepository<Product> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
+        
         //2
-        public void Add(Product product)
+        public void Add(ProductSaveDto product)
         {
-            _repository.Add(product);
+            //Product productEntity = new Product
+            //{
+            //    Title = product.Title,
+            //    Description = product.Description,
+            //    Deadline = product.Deadline,
+            //    IsTaken = false
+            //};
+           var productEntity = _mapper.Map<Product>(product);
+            _repository.Add(productEntity);
             _repository.Save();
         }
 
@@ -29,19 +41,35 @@ namespace YoutubeAPI.Business.Services
             _repository.Save();
         }
         //3
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<ProductDto> GetAll()
         {
-            return (IEnumerable<Product>)_repository.GetAll();
+            IEnumerable<Product> products = _repository.GetAll();
+            var productList = _mapper.Map<List<ProductDto>>(products);
+            return productList;
         }
         //4
-        public Product? GetById(int id)
+        public ProductDto? GetById(int id)
         {
-            return _repository.GetById(id);
+            var entity = _repository.GetById(id);
+
+            var dto = _mapper.Map<ProductDto>(entity);
+            return dto;
         }
         //5
-        public void Update(Product product)
+        public void Update(int id, ProductSaveDto product)
         {
-            _repository.Update(product);
+            var existing = _repository.GetById(id);
+            if (existing == null)
+            {
+                throw new Exception("Product not found");
+            }
+            //existing.Title = product.Title;
+            //existing.Description = product.Description;
+            //existing.Deadline = product.Deadline;
+
+            var productEntity = _mapper.Map<Product>(product);
+            _repository.Update(id, productEntity);
+            _repository.Save();
         }
         public void Take(int id)
         {
@@ -55,7 +83,7 @@ namespace YoutubeAPI.Business.Services
                 throw new Exception("Product is already taken");
             }
             product.IsTaken = true;
-            _repository.Update(product);
+            _repository.Update(id, product);
             _repository.Save();
         }
     }

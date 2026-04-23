@@ -49,7 +49,7 @@ namespace YoutubeAPI.Business.Services
             existingUser.Email = user.Email;
             existingUser.Name = user.Name;
 
-            _repository.Update(existingUser);
+            _repository.Update(existingUser.Id, existingUser);
             _repository.Save();
         }
     }

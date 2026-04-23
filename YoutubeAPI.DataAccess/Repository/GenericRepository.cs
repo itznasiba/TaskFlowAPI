@@ -26,7 +26,7 @@ namespace YoutubeAPI.DataAccess.Repository
             _dbSet.Add(entity);
             Save();
         }
-        public void Update(T entity)
+        public void Update(int id, T entity)
         {
             _dbSet.Update(entity);
             Save();

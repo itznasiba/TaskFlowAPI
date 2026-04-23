@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using YoutubeAPI.Business.Services;
+using YoutubeAPI.Core.Product;
 
 namespace youtubeAPI.Controllers
 {
@@ -22,7 +23,7 @@ namespace youtubeAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Product product)
+        public IActionResult Add(ProductSaveDto product)
         {
             _productService.Add(product);
             return Ok();
@@ -38,15 +39,31 @@ namespace youtubeAPI.Controllers
             return Ok(product);
         }
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Product product)
+        public IActionResult Update(int id, ProductSaveDto product)
         {
-            if (id != product.Id)
+            var existingProduct = _productService.GetById(id);
+            if (existingProduct == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-            _productService.Update(product);
-            return Ok();
+            try
+            {
+                _productService.Update(id, product);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                //    if (id != product.Id)
+                //    {
+                //        return BadRequest();
+                //    }
+                //    _productService.Update(product);
+                //    return Ok();
+            }
+
         }
+        
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

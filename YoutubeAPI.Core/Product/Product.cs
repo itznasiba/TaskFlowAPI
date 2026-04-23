@@ -1,4 +1,6 @@
-﻿namespace youtubeAPI.Core.Entities
+﻿using youtubeAPI.Core.Entities;
+
+namespace YoutubeAPI.Core.Product
 {
     public class Product
     {
