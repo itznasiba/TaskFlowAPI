@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using youtubeAPI.Core.Entities;
 using YoutubeAPI.Business.Services;
+using YoutubeAPI.Core.User;
 
 namespace youtubeAPI.Controllers
 {
@@ -32,17 +32,25 @@ namespace youtubeAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProfile(int id, User user)
+        public IActionResult UpdateProfile(int id, UserSaveDto user)
         {
-            if (id != user.Id)
+            var existingUser = _userService.GetById(id);
+            if (existingUser == null) 
             {
-                return BadRequest();
+                return new NotFoundResult();
             }
-            _userService.UpdateProfile(user);
-            return Ok();
+            try
+            {
+                _userService.UpdateProfile(id, user);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost]
-        public IActionResult Add(User user)
+        public IActionResult Add(UserSaveDto user)
         {
             _userService.Add(user);
             return Ok();
@@ -54,7 +62,5 @@ namespace youtubeAPI.Controllers
             _userService.Delete(id);
             return Ok();
         }
-
-
     }
 }

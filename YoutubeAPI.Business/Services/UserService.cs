@@ -1,18 +1,24 @@
-﻿using youtubeAPI.Core.Entities;
+﻿using YoutubeAPI.Core.User;
 using YoutubeAPI.DataAccess.Repository;
+using AutoMapper;
 
 namespace YoutubeAPI.Business.Services
 {
     public class UserService : IUserService
     {
         private readonly IGenericRepository<User> _repository;
-        public UserService(IGenericRepository<User> repository)
+        private readonly IMapper _mapper;
+
+        public UserService(IGenericRepository<User> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
-        public void Add(User user)
+
+        public void Add(UserSaveDto user)
         {
-            _repository.Add(user);
+            var userEntity = _mapper.Map<User>(user);
+            _repository.Add(userEntity);
             _repository.Save();
         }
 
@@ -27,27 +33,27 @@ namespace YoutubeAPI.Business.Services
             _repository.Save();
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<UserDto> GetAll()
         {
-            return _repository.GetAll();
-            
+            var users = _repository.GetAll();
+            return _mapper.Map<IEnumerable<UserDto>>(users);
         }
 
-        public User? GetById(int id)
+        public UserDto? GetById(int id)
         {
-            return _repository.GetById(id);
+            var user = _repository.GetById(id);
+            return _mapper.Map<UserDto>(user);
         }
 
-        public void UpdateProfile(User user)
+        public void UpdateProfile(int id, UserSaveDto user)
         {
-            var existingUser = _repository.GetById(user.Id);
+            var existingUser = _repository.GetById(id);
             if (existingUser == null)
             {
                 throw new Exception("User not found");
             }
             
-            existingUser.Email = user.Email;
-            existingUser.Name = user.Name;
+            var userEntity = _mapper.Map(user, existingUser);
 
             _repository.Update(existingUser.Id, existingUser);
             _repository.Save();

@@ -1,13 +1,13 @@
-﻿using youtubeAPI.Core.Entities;
+﻿using YoutubeAPI.Core.User;
 
 namespace YoutubeAPI.Business.Services
 {
     public interface IUserService
     {
-            IEnumerable<User> GetAll();
-            User? GetById(int id);
-            void Add(User user);
-            void UpdateProfile(User user);
+            IEnumerable<UserDto> GetAll();
+            UserDto? GetById(int id);
+            void Add(UserSaveDto user);
+            void UpdateProfile(int id,UserSaveDto user);
             void Delete(int id);
     }
 }

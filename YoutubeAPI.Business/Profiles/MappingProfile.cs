@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using YoutubeAPI.Core.Product; // Ensure correct namespace for Product and ProductDto
-
+using YoutubeAPI.Core.Product;
+using YoutubeAPI.Core.User;
 namespace YoutubeAPI.Business.Profiles
 {
     public class MappingProfile : Profile
@@ -15,6 +15,10 @@ namespace YoutubeAPI.Business.Profiles
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductDto, ProductSaveDto>();
             CreateMap<ProductSaveDto, Product>();
+
+            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<UserDto, UserSaveDto>();
+            CreateMap<UserSaveDto, User>();
         }
 
     }

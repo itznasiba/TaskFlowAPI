@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using youtubeAPI.Core.Entities;
+using YoutubeAPI.Core.User;
 
 namespace YoutubeAPI.Core.Product
 {
@@ -16,6 +16,6 @@ namespace YoutubeAPI.Core.Product
         public DateTime? Deadline { get; set; }
         public bool IsTaken { get; set; } = false;
         public int? AppUserId { get; set; }
-        public User? AppUser { get; set; }
+        public UserDto? AppUser { get; set; }
     }
 }

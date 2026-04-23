@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using youtubeAPI.Core.Entities;
+using YoutubeAPI.Core.User;
 using YoutubeAPI.Core.Product;
 
 namespace YoutubeAPI.DataAccess.Repository

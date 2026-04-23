@@ -1,4 +1,4 @@
-﻿namespace youtubeAPI.Core.Entities
+﻿namespace YoutubeAPI.Core.User
 {
     public class User
     {
