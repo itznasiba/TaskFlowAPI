@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
-using youtubeAPI.Core.Entities;
 using YoutubeAPI.Business.Services;
 
 namespace youtubeAPI.Controllers
