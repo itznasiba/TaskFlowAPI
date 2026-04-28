@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using YoutubeAPI.Core.Product;
-using YoutubeAPI.Core.User;
-namespace YoutubeAPI.Business.Profiles
+using TaskAPI.Core.Product;
+using TaskAPI.Core.User;
+namespace TaskAPI.Business.Profiles
 {
     public class MappingProfile : Profile
     {

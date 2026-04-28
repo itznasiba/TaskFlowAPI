@@ -1,4 +1,4 @@
-﻿namespace YoutubeAPI.Core.User
+﻿namespace TaskAPI.Core.User
 {
     public class User
     {

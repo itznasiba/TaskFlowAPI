@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
-using YoutubeAPI.Business.Services;
-using YoutubeAPI.Core.Product;
+using TaskAPI.Business.Services;
+using TaskAPI.Core.Product;
 
 namespace youtubeAPI.Controllers
 {

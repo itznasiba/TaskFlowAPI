@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoutubeAPI.Core\YoutubeAPI.Core.csproj" />
-    <ProjectReference Include="..\YoutubeAPI.DataAccess\YoutubeAPI.DataAccess.csproj" />
+    <ProjectReference Include="..\YoutubeAPI.Core\TaskAPI.Core.csproj" />
+    <ProjectReference Include="..\YoutubeAPI.DataAccess\TaskAPI.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using YoutubeAPI.Business.Services;
-using YoutubeAPI.DataAccess.Repository;
-using YoutubeAPI.Business.Profiles;
+using TaskAPI.Business.Services;
+using TaskAPI.DataAccess.Repository;
+using TaskAPI.Business.Profiles;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI; // Add this using directive
 using Swashbuckle.AspNetCore.Swagger;   // Add this using directive
 using Swashbuckle.AspNetCore.SwaggerGen; // Add this using directive
 
-namespace YoutubeAPI
+namespace TaskAPI
 {
     public class Program
     {
@@ -26,7 +26,7 @@ namespace YoutubeAPI
                 cfg.AddProfile<MappingProfile>();
             });
 
-            builder.Services.AddDbContext<YoutubeDbContext>(options =>
+            builder.Services.AddDbContext<TaskDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubeAPI.Core.Product
+namespace TaskAPI.Core.Product
 {
     public class ProductSaveDto
     {

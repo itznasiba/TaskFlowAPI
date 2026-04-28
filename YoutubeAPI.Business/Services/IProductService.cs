@@ -1,6 +1,6 @@
-﻿using YoutubeAPI.Core.Product;
+﻿using TaskAPI.Core.Product;
 
-namespace YoutubeAPI.Business.Services
+namespace TaskAPI.Business.Services
 {
     public interface IProductService
     {

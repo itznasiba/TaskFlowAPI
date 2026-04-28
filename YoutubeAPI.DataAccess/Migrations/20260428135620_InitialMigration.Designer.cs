@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using YoutubeAPI.DataAccess.Repository;
+using TaskAPI.DataAccess.Repository;
 
 #nullable disable
 
-namespace YoutubeAPI.DataAccess.Migrations
+namespace TaskAPI.DataAccess.Migrations
 {
-    [DbContext(typeof(YoutubeDbContext))]
-    partial class YoutubeDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TaskDbContext))]
+    [Migration("20260428135620_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace YoutubeAPI.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("youtubeAPI.Core.Entities.Product", b =>
+            modelBuilder.Entity("TaskAPI.Core.Product.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +58,7 @@ namespace YoutubeAPI.DataAccess.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("youtubeAPI.Core.Entities.User", b =>
+            modelBuilder.Entity("TaskAPI.Core.User.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,9 +80,28 @@ namespace YoutubeAPI.DataAccess.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("youtubeAPI.Core.Entities.Product", b =>
+            modelBuilder.Entity("TaskAPI.Core.User.UserDto", b =>
                 {
-                    b.HasOne("youtubeAPI.Core.Entities.User", "AppUser")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserDto");
+                });
+
+            modelBuilder.Entity("TaskAPI.Core.Product.Product", b =>
+                {
+                    b.HasOne("TaskAPI.Core.User.UserDto", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
 

@@ -1,8 +1,8 @@
-﻿using YoutubeAPI.Core.User;
-using YoutubeAPI.DataAccess.Repository;
+﻿using TaskAPI.Core.User;
+using TaskAPI.DataAccess.Repository;
 using AutoMapper;
 
-namespace YoutubeAPI.Business.Services
+namespace TaskAPI.Business.Services
 {
     public class UserService : IUserService
     {

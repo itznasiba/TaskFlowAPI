@@ -1,6 +1,6 @@
-﻿using YoutubeAPI.Core.User;
+﻿using TaskAPI.Core.User;
 
-namespace YoutubeAPI.Core.Product
+namespace TaskAPI.Core.Product
 {
     public class Product
     {

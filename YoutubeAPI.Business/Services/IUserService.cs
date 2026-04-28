@@ -1,6 +1,6 @@
-﻿using YoutubeAPI.Core.User;
+﻿using TaskAPI.Core.User;
 
-namespace YoutubeAPI.Business.Services
+namespace TaskAPI.Business.Services
 {
     public interface IUserService
     {

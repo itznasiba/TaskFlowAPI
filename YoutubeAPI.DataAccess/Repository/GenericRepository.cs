@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace YoutubeAPI.DataAccess.Repository
+namespace TaskAPI.DataAccess.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly YoutubeDbContext _context;
+        private readonly TaskDbContext _context;
         private readonly DbSet<T> _dbSet;
-        public GenericRepository(YoutubeDbContext context)
+        public GenericRepository(TaskDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();

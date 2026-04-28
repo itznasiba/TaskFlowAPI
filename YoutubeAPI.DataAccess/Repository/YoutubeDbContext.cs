@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using YoutubeAPI.Core.User;
-using YoutubeAPI.Core.Product;
+using TaskAPI.Core.User;
+using TaskAPI.Core.Product;
 
-namespace YoutubeAPI.DataAccess.Repository
+namespace TaskAPI.DataAccess.Repository
 {
-    public class YoutubeDbContext : DbContext
+    public class TaskDbContext : DbContext
     {
-        public YoutubeDbContext(DbContextOptions<YoutubeDbContext> options) : base(options)
+        public TaskDbContext(DbContextOptions<TaskDbContext> options) : base(options)
         {
         }
 

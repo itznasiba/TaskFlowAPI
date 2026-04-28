@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YoutubeAPI.Core.User;
+using TaskAPI.Core.User;
 
-namespace YoutubeAPI.Core.Product
+namespace TaskAPI.Core.Product
 {
     public class ProductDto
     {

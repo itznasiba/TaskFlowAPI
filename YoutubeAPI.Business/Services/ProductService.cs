@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using YoutubeAPI.Core.Product;
-using YoutubeAPI.DataAccess.Repository;
+using TaskAPI.Core.Product;
+using TaskAPI.DataAccess.Repository;
 
-namespace YoutubeAPI.Business.Services
+namespace TaskAPI.Business.Services
 {
     public class ProductService : IProductService
     {

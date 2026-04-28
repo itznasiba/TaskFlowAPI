@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoutubeAPI.Business\YoutubeAPI.Business.csproj" />
-    <ProjectReference Include="..\YoutubeAPI.DataAccess\YoutubeAPI.DataAccess.csproj" />
+    <ProjectReference Include="..\YoutubeAPI.Business\TaskAPI.Business.csproj" />
+    <ProjectReference Include="..\YoutubeAPI.DataAccess\TaskAPI.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

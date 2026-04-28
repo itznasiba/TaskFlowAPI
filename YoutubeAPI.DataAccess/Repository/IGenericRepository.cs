@@ -1,4 +1,4 @@
-﻿namespace YoutubeAPI.DataAccess.Repository
+﻿namespace TaskAPI.DataAccess.Repository
 {
     public interface IGenericRepository<T> where T : class
     {
