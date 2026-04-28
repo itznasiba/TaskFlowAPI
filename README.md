@@ -1,33 +1,33 @@
-# youtubewebAPI
-# YoutubeAPI - Task Management System
+# TaskFlow-API
+# TaskFlow-API - Task Management System
 
-Bu layihə, C# və ASP.NET Core texnologiyaları istifadə edilərək hazırlanmış, tapşırıqların idarə edilməsi üçün nəzərdə tutulmuş müasir bir RESTful API sistemidir. Layihənin əsas məqsədi, təmiz kod prinsipləri və genişlənə bilən bir memarlıq nümayiş etdirməkdir.
+This project is a modern RESTful API system designed for task management, built using **C#** and **ASP.NET Core**. The primary goal of the project is to demonstrate clean code principles and a scalable software architecture.
 
-## 🚀 Texnoloji Stack
+## 🚀 Tech Stack
 
-* **Framework:** .NET 8 / ASP.NET Core
+* **Framework:** .NET 9 / ASP.NET Core
 * **Database:** MSSQL Server (Entity Framework Core)
 * **Architecture:** N-Tier Architecture (Core, Business, DataAccess, API)
 * **Design Patterns:** Generic Repository Pattern, DTO Pattern
 * **Tools:** AutoMapper, Swagger UI, LINQ
 
-## ✨ Əsas Özəlliklər
+## ✨ Key Features
 
-* **N-Tier Architecture:** Layihə məntiqi qatlara (Layers) bölünərək asan idarəolunan və test edilə bilən hala gətirilib.
-* **Generic Repository:** Verilənlər bazası əməliyyatları vahid bir mərkəzdən idarə olunur.
-* **DTO (Data Transfer Object):** Təhlükəsizlik üçün həssas məlumatlar (şifrə və s.) API cavablarından gizlədilib.
-* **Automated Mapping:** AutoMapper istifadə edilərək obyektlər arası çevrilmələr avtomatlaşdırılıb.
-* **API Documentation:** Swagger UI vasitəsilə API-nin bütün endpointləri sənədləşdirilib.
+* **N-Tier Architecture:** The project is separated into logical layers to ensure maintainability and testability.
+* **Generic Repository Pattern:** Database operations are centralized and abstracted for better code reusability.
+* **DTO (Data Transfer Object):** Sensitive data is protected by using DTOs for API responses and requests.
+* **Automated Mapping:** Utilizes AutoMapper for seamless object-to-object transformations.
+* **API Documentation:** Fully documented API endpoints using Swagger UI for interactive testing.
 
-## 📂 Layihə Strukturu
+## 📂 Project Structure
 
-- **YoutubeAPI.Core:** Entity-lər, DTO-lar və əsas interfeyslər.
-- **YoutubeAPI.Business:** İş məntiqi (Services) və Mapping konfiqurasiyaları.
-- **YoutubeAPI.DataAccess:** Verilənlər bazası bağlantısı, Repository implementasiyaları və Miqrasiyalar.
-- **YoutubeAPI.WebAPI:** Controller-lər və xarici dünya ilə ünsiyyət qatı.
+- **TaskFlow.Core:** Contains Entities, DTOs, and base interfaces.
+- **TaskFlow.Business:** Handles business logic (Services) and mapping configurations.
+- **TaskFlow.DataAccess:** Manages database context, repository implementations, and migrations.
+- **TaskFlow.WebAPI:** Contains Controllers and manages the external communication layer.
 
-## 🛠️ Quraşdırma (Installation)
+## 🛠️ Installation & Setup
 
-1. Layihəni klonlayın:
+1. Clone the repository:
    ```bash
-   git clone [https://github.com/istifadeci-adiniz/layihe-adi.git](https://github.com/istifadeci-adiniz/layihe-adi.git)
+   git clone [https://github.com/your-username/TaskFlow-API.git](https://github.com/your-username/TaskFlow-API.git)
