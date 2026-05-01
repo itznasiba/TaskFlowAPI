@@ -1,6 +1,7 @@
 ﻿using TaskAPI.Core.User;
 using TaskAPI.DataAccess.Repository;
 using AutoMapper;
+using TaskAPI.Core.Exceptions;
 
 namespace TaskAPI.Business.Services
 {
@@ -27,7 +28,7 @@ namespace TaskAPI.Business.Services
             var existingUser = _repository.GetById(id);
             if (existingUser == null)
             {
-                throw new Exception("User not found");
+                throw new NotFoundException($"User with id {id} not found");
             }
             _repository.Delete(existingUser);
             _repository.Save();
@@ -42,6 +43,10 @@ namespace TaskAPI.Business.Services
         public UserDto? GetById(int id)
         {
             var user = _repository.GetById(id);
+            if (user == null)
+            {
+                throw new NotFoundException($"User with id {id} not found");
+            }
             return _mapper.Map<UserDto>(user);
         }
 
@@ -50,7 +55,7 @@ namespace TaskAPI.Business.Services
             var existingUser = _repository.GetById(id);
             if (existingUser == null)
             {
-                throw new Exception("User not found");
+                throw new NotFoundException($"User with id {id} not found");
             }
             
             var userEntity = _mapper.Map(user, existingUser);

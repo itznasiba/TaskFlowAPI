@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskAPI.Business.Services;
+using TaskAPI.Core.Exceptions;
 using TaskAPI.Core.User;
 
 namespace youtubeAPI.Controllers
@@ -24,30 +25,14 @@ namespace youtubeAPI.Controllers
         public IActionResult GetById(int id)
         {
             var user = _userService.GetById(id);
-            if (user == null)
-            {
-                return new NotFoundResult();
-            }
             return Ok(user);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateProfile(int id, UserSaveDto user)
         {
-            var existingUser = _userService.GetById(id);
-            if (existingUser == null) 
-            {
-                return new NotFoundResult();
-            }
-            try
-            {
-                _userService.UpdateProfile(id, user);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            _userService.UpdateProfile(id, user);
+            return Ok();
         }
         [HttpPost]
         public IActionResult Add(UserSaveDto user)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using TaskAPI.Business.Services;
+using TaskAPI.Core.Exceptions;
 using TaskAPI.Core.Product;
 
 namespace youtubeAPI.Controllers
@@ -28,60 +29,33 @@ namespace youtubeAPI.Controllers
             _productService.Add(product);
             return Ok();
         }
+
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var product = _productService.GetById(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
             return Ok(product);
         }
+
         [HttpPut("{id}")]
         public IActionResult Update(int id, ProductSaveDto product)
         {
-            var existingProduct = _productService.GetById(id);
-            if (existingProduct == null)
-            {
-                return NotFound();
-            }
-            try
-            {
-                _productService.Update(id, product);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-                //    if (id != product.Id)
-                //    {
-                //        return BadRequest();
-                //    }
-                //    _productService.Update(product);
-                //    return Ok();
-            }
-
+            _productService.Update(id, product);
+            return Ok();
         }
-        
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             _productService.Delete(id);
             return Ok();
         }
+
         [HttpPost("{id}/take")]
         public IActionResult Take(int id)
         {
-            try
-            {
-                _productService.Take(id);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            _productService.Take(id);
+            return Ok();
         }
 
     }

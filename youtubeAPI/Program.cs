@@ -6,7 +6,8 @@ using TaskAPI.Business.Profiles;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI; // Add this using directive
 using Swashbuckle.AspNetCore.Swagger;   // Add this using directive
-using Swashbuckle.AspNetCore.SwaggerGen; // Add this using directive
+using Swashbuckle.AspNetCore.SwaggerGen;
+using TaskAPI.Middleware; // Add this using directive
 
 namespace TaskAPI
 {
@@ -48,6 +49,7 @@ namespace TaskAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseAuthorization();
 

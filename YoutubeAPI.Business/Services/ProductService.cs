@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TaskAPI.Core.Exceptions;
 using TaskAPI.Core.Product;
 using TaskAPI.DataAccess.Repository;
 
@@ -8,6 +9,7 @@ namespace TaskAPI.Business.Services
     {
         private readonly IGenericRepository<Product> _repository;
         private readonly IMapper _mapper;
+
         public ProductService(IGenericRepository<Product> repository, IMapper mapper)
         {
             _repository = repository;
@@ -17,13 +19,6 @@ namespace TaskAPI.Business.Services
         //2
         public void Add(ProductSaveDto product)
         {
-            //Product productEntity = new Product
-            //{
-            //    Title = product.Title,
-            //    Description = product.Description,
-            //    Deadline = product.Deadline,
-            //    IsTaken = false
-            //};
            var productEntity = _mapper.Map<Product>(product);
             _repository.Add(productEntity);
             _repository.Save();
@@ -34,8 +29,8 @@ namespace TaskAPI.Business.Services
         {
             var existing = _repository.GetById(id);
             if (existing == null)
-                {
-                    throw new Exception("Object not found");
+            {
+                    throw new NotFoundException($"Product with id {id} not found");
             }
             _repository.Delete(existing);
             _repository.Save();
@@ -44,16 +39,18 @@ namespace TaskAPI.Business.Services
         public IEnumerable<ProductDto> GetAll()
         {
             IEnumerable<Product> products = _repository.GetAll();
-            var productList = _mapper.Map<List<ProductDto>>(products);
-            return productList;
+            return _mapper.Map<List<ProductDto>>(products);
         }
         //4
         public ProductDto? GetById(int id)
         {
             var entity = _repository.GetById(id);
+            if (entity == null)
+            {
+                throw new NotFoundException($"Product with id {id} not found");
+            }
 
-            var dto = _mapper.Map<ProductDto>(entity);
-            return dto;
+             return _mapper.Map<ProductDto>(entity);
         }
         //5
         public void Update(int id, ProductSaveDto product)
@@ -61,7 +58,7 @@ namespace TaskAPI.Business.Services
             var existing = _repository.GetById(id);
             if (existing == null)
             {
-                throw new Exception("Product not found");
+                throw new NotFoundException($"Product with id {id} not found");
             }
             //existing.Title = product.Title;
             //existing.Description = product.Description;
@@ -76,11 +73,11 @@ namespace TaskAPI.Business.Services
             var product = _repository.GetById(id);
             if (product == null)
             {
-                throw new Exception("Product not found");
+                throw new NotFoundException($"Product with id {id} not found");
             }
             if (product.IsTaken)
             {
-                throw new Exception("Product is already taken");
+                throw new BadRequestException($"Product with id {id} is already taken");
             }
             product.IsTaken = true;
             _repository.Update(id, product);
