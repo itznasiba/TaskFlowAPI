@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoutubeAPI.Business\TaskAPI.Business.csproj" />
-    <ProjectReference Include="..\YoutubeAPI.Core\TaskAPI.Core.csproj" />
-    <ProjectReference Include="..\YoutubeAPI.DataAccess\TaskAPI.DataAccess.csproj" />
+    <ProjectReference Include="..\TaskAPI.Business\TaskAPI.Business.csproj" />
+    <ProjectReference Include="..\TaskAPI.Core\TaskAPI.Core.csproj" />
+    <ProjectReference Include="..\TaskAPI.DataAccess\TaskAPI.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

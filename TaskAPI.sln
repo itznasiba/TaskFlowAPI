@@ -1,17 +1,16 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36908.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI", "youtubeAPI\TaskAPI.csproj", "{8937694A-9306-4B73-847C-FF493223BF9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI", "TaskAPI\TaskAPI.csproj", "{8937694A-9306-4B73-847C-FF493223BF9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI.Core", "YoutubeAPI.Core\TaskAPI.Core.csproj", "{C8ECBC1F-7E1E-4306-9031-BFBBC2C0C480}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI.Core", "TaskAPI.Core\TaskAPI.Core.csproj", "{C8ECBC1F-7E1E-4306-9031-BFBBC2C0C480}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI.DataAccess", "YoutubeAPI.DataAccess\TaskAPI.DataAccess.csproj", "{B93F1789-800E-49B8-83BD-09F38A788733}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI.DataAccess", "TaskAPI.DataAccess\TaskAPI.DataAccess.csproj", "{B93F1789-800E-49B8-83BD-09F38A788733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI.Business", "YoutubeAPI.Business\TaskAPI.Business.csproj", "{AFCF74E6-FA86-4E1A-9C32-0E12758A1988}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI.Business", "TaskAPI.Business\TaskAPI.Business.csproj", "{AFCF74E6-FA86-4E1A-9C32-0E12758A1988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
